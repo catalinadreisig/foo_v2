@@ -7,5 +7,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <link className="underline" href="/dashboard/about" />
       <link className="underline" href="/dashboard/about" />
     </nav>
+    {children}
   </section>;
 }
