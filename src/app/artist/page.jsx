@@ -6,10 +6,12 @@ export default async function Artist() {
   console.log(data);
 
   return (
-    <section>
-      {data.map((band) => {
-        return <CardArtist key={band.name} data={band} />;
-      })}
+    <section justify-center>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-10 text-white uppercase">
+        {data.map((band) => {
+          return <CardArtist key={band.name} data={band} />;
+        })}
+      </div>
     </section>
   );
 }

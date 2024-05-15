@@ -1,5 +1,5 @@
-import React from "react";
+import CardArtist from "../components/CardArtist";
 
 export default function page() {
-  return <div>page</div>;
+  return <div>hej</div>;
 }

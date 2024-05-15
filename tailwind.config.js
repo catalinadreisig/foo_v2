@@ -10,8 +10,8 @@ module.exports = {
       },
 
       colors: {
-        foo_blue: "#151eff",
-        text_white: "#ffffff",
+        fooBlue: "#151eff",
+        textWhite: "#ffffff",
       },
     },
   },
