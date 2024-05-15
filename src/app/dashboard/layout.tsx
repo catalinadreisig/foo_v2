@@ -4,8 +4,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return;
   <section className="space-y-4">
     <nav className="flex  items-center justify-between">
-      <link className="underline" href="/dashboard/about" />
-      <link className="underline" href="/dashboard/about" />
+      <Link className="underline" href="/dashboard/about" about </Link>
+      <Link className="underline" href="/dashboard/ticket" buy ticket</Link>
     </nav>
     {children}
   </section>;
