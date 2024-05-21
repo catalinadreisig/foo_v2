@@ -8,9 +8,9 @@ import insta from "../app/imgs/insta.png";
 
 const Navbar = () => {
   return (
-    <div className="w-full px-20 pb-12 text-links">
+    <div className="w-full text-links">
       <Lines className="pt-0" />
-      <div className="grid grid-cols-2 gap-x-2 pt-10">
+      <div className="grid grid-cols-2 gap-x-2 py-12 px-20">
         <div className="w-6/12 grid grid-cols-3 self-center">
           <Logo />
 

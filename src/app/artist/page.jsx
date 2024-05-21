@@ -7,7 +7,7 @@ export default async function Artist() {
 
   return (
     <section>
-      <h1 className="text-white uppercase text-headers py-5 pt-10">ARTISTS</h1>
+      <h1 className="text-white uppercase text-headers py-8 pt-16">ARTISTS</h1>
       <div className=" justify-center">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-10 text-white uppercase text-breads">
           {data.map((band) => {
