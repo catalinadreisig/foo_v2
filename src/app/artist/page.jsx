@@ -6,8 +6,8 @@ export default async function Artist() {
   console.log(data);
 
   return (
-    <section>
-      <h1 className="text-white uppercase text-headers py-8 pt-16">ARTISTS</h1>
+    <section className="grid">
+      <h1 className="text-white uppercase text-headers py-8 pt-16 justify-self-end">ARTISTS</h1>
       <div className=" justify-center">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-10 text-white uppercase text-breads">
           {data.map((band) => {
