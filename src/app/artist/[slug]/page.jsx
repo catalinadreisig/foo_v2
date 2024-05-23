@@ -8,14 +8,14 @@ export default async function Band({ params }) {
   const band = filterData[0];
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-20 text-white uppercase text-breads pt-32">
+    <section className="grid grid-cols-1 pt-32 md:grid-cols-2 text-white uppercase text-breads">
       <div>
-        <CardArtist data={band} />
+        <CardArtist data={band} className />
       </div>
-      <div className="flex">
-        <h1 className="uppercase text-headers p-5 justify-self-end">{band.name}</h1>
-        <p className="uppercase text-breads p-5 justify-self-end">{band.genre}</p>
-        <p className="uppercase text-breads p-5 justify-self-end">{band.bio}</p>
+      <div className=" pt-7 grid justify-items-end md:pt-0 self-start">
+        <h1 className="text-headers">{band.name}</h1>
+        <p className=" pt-2 italic">{band.genre}</p>
+        <p className="pt-2 flexjustify-self-end md:pl-40">{band.bio}</p>
       </div>
     </section>
   );
