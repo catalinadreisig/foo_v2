@@ -3,8 +3,7 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 export default function Program() {
-  const response = fetch("http://localhost:8080/schedule");
-  console.log(data);
+  const data = fetch("http://localhost:8080/schedule");
   const [midgard, setMidgard] = useState([]);
   const [vanaheim, setVanaheim] = useState([]);
   const [jotunheim, setJotunheim] = useState([]);
@@ -23,7 +22,7 @@ export default function Program() {
     <section>
       <h1 className="text-white uppercase text-headers py-8 pt-16 justify-self-end">program</h1>
       <Link className="grid place-items-center" href={`/artist/${midgard.mon}`}>
-        <h1 className="col-start-1 row-start-1">{midgard.mon}</h1>
+        <h1 className="col-start-1 row-start-1">hey</h1>
         <h1 className="col-start-1 row-start-1">FRIDAY AT 07:45PM</h1>
         <h1>BLUE SCENE</h1>
       </Link>
