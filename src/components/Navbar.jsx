@@ -23,7 +23,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link href="/ticket">
-                <p>buy ticket</p>
+                <p>tickets</p>
               </Link>
             </li>
           </ul>
