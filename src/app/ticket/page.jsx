@@ -14,6 +14,7 @@ export default function ticket() {
   const [green, setGreen] = useState(false);
   const [availability, setAvailability] = useState([]);
   const [reservationId, setReservationId] = useState(false);
+  const [resId, setResId] = useState();
 
   const [oldValue] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
@@ -56,8 +57,27 @@ export default function ticket() {
 
   function makeReservation() {
     setReservationId(true);
-    // her fetcher du
   }
+
+  async function getReservation() {
+    const response = await fetch("http://localhost:8080/reserve-spot", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        area: campSitePick,
+        amount: regTickets,
+      }),
+    });
+    return await response.json();
+  }
+
+  useEffect(() => {
+    setResId(getReservation());
+  }, [reservationId]);
+
+  console.log(resId);
 
   return (
     <section className="text-breads text-white uppercase">
