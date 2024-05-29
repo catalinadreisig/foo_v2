@@ -62,9 +62,9 @@ export default function ticket() {
   return (
     <section className="text-breads text-white uppercase">
       <section>
-        <h1 className="text-headers pt-16 justify-self-end pb-8">Tickets</h1>
+        <h1 className="text-headers pt-20 justify-self-end pb-8">Tickets</h1>
         <div className="flex gap-x-3 pb-3 text-links">
-          <p className="justify-self-end">regular tickets 799dkk</p>
+          <p>regular tickets 799dkk</p>
           <button
             onClick={() => {
               setRegTickets((o) => o - 1);
