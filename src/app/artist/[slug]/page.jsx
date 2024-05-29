@@ -15,7 +15,7 @@ export default async function Band({ params }) {
       <div className=" pt-7 grid justify-items-end md:pt-0 self-start">
         <h1 className="text-headers">{band.name}</h1>
         <p className=" pt-2 italic">{band.genre}</p>
-        <p className="pt-2 flexjustify-self-end md:pl-40">{band.bio}</p>
+        <p className="pt-2 text-right md:pl-40">{band.bio}</p>
       </div>
     </section>
   );
