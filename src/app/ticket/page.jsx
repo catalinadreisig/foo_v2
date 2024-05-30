@@ -15,13 +15,12 @@ export default function Ticket() {
   const [availability, setAvailability] = useState([]);
   const [reservationId, setReservationId] = useState(false);
   const [resId, setResId] = useState();
+  const [totalPrice, setTotalPrice] = useState(99);
 
+  //might use:
   const [oldValue] = useState();
   const [bookingInfo, setBookingInfo] = useState({});
-
   const [info, setInfo] = useState();
-
-  const [totalPrice, setTotalPrice] = useState(99);
 
   async function getAvailability() {
     const res = await fetch("http://localhost:8080/available-spots");
@@ -268,7 +267,7 @@ export default function Ticket() {
           <div>
             <h1 className="text-headers pt-8 justify-self-end">info</h1>
             {reservationId && <Timer reservationId={reservationId} />}
-            <form onSubmit="return">
+            <form onsubmit="return">
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>first name:</label>
