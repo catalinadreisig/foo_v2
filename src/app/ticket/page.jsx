@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Lines from "../../components/Lines";
 import Timer from "../../components/Timer";
-
 import { createClient } from "@supabase/supabase-js";
 
 //supabase
