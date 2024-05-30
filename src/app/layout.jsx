@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <header>
           <Navbar />
         </header>
-        <main className="px-20 py-10 justify-center flex">{children}</main>
+        <main className="px-10 py-10 justify-center flex md:px-20">{children}</main>
         <footer>
           <Footer />
         </footer>

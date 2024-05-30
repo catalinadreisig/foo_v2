@@ -26,11 +26,11 @@ export default function Program() {
     <section className="text-white uppercase text-breads grid">
       <h1 className="text-headers py-10 pt-16 justify-self-end">program</h1>
 
-      <div className="flex justify-center flex-wrap gap-14 pt-6 text-links">
+      <div className="flex justify-center flex-wrap pt-6 gap-2 md:gap-14 md:text-links ">
         <button className="uppercase hover:underline" onClick={() => setDay("mon")}>
           Monday
         </button>
-
+        <p className="md:hidden"> // </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -39,7 +39,7 @@ export default function Program() {
         >
           Tuesday
         </button>
-
+        <p className="md:hidden"> // </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -48,7 +48,7 @@ export default function Program() {
         >
           Wednesday
         </button>
-
+        <p className="md:hidden"> // </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -57,7 +57,7 @@ export default function Program() {
         >
           Thursday
         </button>
-
+        <p className="md:hidden"> // </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -66,7 +66,7 @@ export default function Program() {
         >
           Friday
         </button>
-
+        <p className="md:hidden"> // </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -75,7 +75,7 @@ export default function Program() {
         >
           Saturday
         </button>
-
+        <p className="md:hidden"> // </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -86,18 +86,18 @@ export default function Program() {
         </button>
       </div>
 
-      <h1 className="justify-self-center pt-12 pb-8 text-headers">{day}</h1>
+      <h1 className="justify-self-center pt-12 pb-8 text-links md:text-headers">{day}</h1>
 
       <Lines />
 
-      <div className="grid grid-cols-4 pt-10 text-links gap-[12.5rem]">
+      <div className="text-mini pt-10 grid grid-cols-4 gap-2 md:gap-[12.5rem] md:text-links ">
         <h2>Time</h2>
         <h2>Midgard</h2>
         <h2>Vanaheim</h2>
         <h2>Jotunheim</h2>
       </div>
 
-      <article className=" pt-10 grid grid-cols-4 gap-44">
+      <article className="text-mini pt-10 gap-2 grid grid-cols-4  md:gap-44">
         <div>
           {midgard.map((time) => {
             return (
