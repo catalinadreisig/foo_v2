@@ -9,11 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "hamburger-react": "^2.5.1",
-=======
     "@supabase/supabase-js": "^2.43.4",
->>>>>>> 1d342d5ef15f26f476f6e28b3bd6cc0c81400098
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
