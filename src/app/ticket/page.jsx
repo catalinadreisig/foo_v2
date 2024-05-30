@@ -270,7 +270,7 @@ export default function Ticket() {
           <div>
             <h1 className="text-headers pt-8 justify-self-end">info</h1>
             {reservationId && <Timer reservationId={reservationId} />}
-            <form onsubmit="return">
+            <form onSubmit="return">
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>first name:</label>
