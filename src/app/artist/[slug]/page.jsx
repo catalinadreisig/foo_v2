@@ -10,7 +10,7 @@ export default async function Band({ params }) {
   return (
     <section className="grid grid-cols-1 pt-32 md:grid-cols-2 text-white uppercase text-breads">
       <div>
-        <CardArtist data={band} className />
+        <CardArtist data={band} />
       </div>
       <div className=" pt-7 grid justify-items-end md:pt-0 self-start">
         <h1 className="text-headers">{band.name}</h1>
