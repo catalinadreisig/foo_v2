@@ -75,6 +75,10 @@ export default function Ticket() {
     setResId(data.id);
   }
 
+  useEffect(() => {
+    setTotalTickets(regTickets + vipTickets);
+  }, [regTickets, vipTickets]);
+
   function completeReservation() {
     // samle data op fra formen via formdata som i recipies
     //kalde den funktion som sender data til supabase
