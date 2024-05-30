@@ -258,7 +258,7 @@ export default function Ticket() {
             </div>
 
             <button className="text-links uppercase pt-8 hover:underline" onClick={makeReservation}>
-              looks right? TIMER START VED TRYK
+              looks right?
             </button>
           </div>
 
