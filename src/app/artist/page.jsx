@@ -1,7 +1,7 @@
 import CardArtist from "../../components/CardArtist";
 
 export default async function Artist() {
-  const response = await fetch("http://localhost:8080/bands");
+  const response = await fetch("https://mature-insidious-monitor.glitch.me/bands");
   const data = await response.json();
   console.log(data);
 
