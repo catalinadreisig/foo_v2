@@ -30,7 +30,7 @@ export default function Program() {
         <button className="uppercase hover:underline" onClick={() => setDay("mon")}>
           Monday
         </button>
-        <p className="md:hidden"> // </p>
+        <p className="md:hidden"> / </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -39,7 +39,7 @@ export default function Program() {
         >
           Tuesday
         </button>
-        <p className="md:hidden"> // </p>
+        <p className="md:hidden"> / </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -48,7 +48,7 @@ export default function Program() {
         >
           Wednesday
         </button>
-        <p className="md:hidden"> // </p>
+        <p className="md:hidden"> / </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -57,7 +57,7 @@ export default function Program() {
         >
           Thursday
         </button>
-        <p className="md:hidden"> // </p>
+        <p className="md:hidden"> / </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -66,7 +66,7 @@ export default function Program() {
         >
           Friday
         </button>
-        <p className="md:hidden"> // </p>
+        <p className="md:hidden"> / </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
@@ -75,7 +75,7 @@ export default function Program() {
         >
           Saturday
         </button>
-        <p className="md:hidden"> // </p>
+        <p className="md:hidden"> / </p>
         <button
           className="uppercase hover:underline"
           onClick={() => {
