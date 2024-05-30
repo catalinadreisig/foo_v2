@@ -15,35 +15,44 @@ const Navbar = () => {
       <div className="container mx-auto px-4 h-full">
         <div className="flex justify-between items-center h-full">
           <Logo />
-          <Hamburger
-            toggled={isOpen}
-            toggle={setOpen}
-            color="#FFF"
-            size={48}
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            <div className="fixed top-0 left-0 w-full h-full bg-fooBlue hidden">
-              <ul className="md:flex gap-x-6 text-white uppercase pt-5 ">
-                <li>
+          <div className="z-10">
+            <Hamburger toggled={isOpen} toggle={setOpen} color="#FFF" size={48} />
+          </div>
+          {isOpen && (
+            <div className="fixed top-20 right-0 w-6/12 md:w-4/12 h-full bg-fooBlue">
+              <ul className=" fixed right-3 text-end text-white uppercase pt-16 ">
+                <li
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
                   <Link href="/artist">
                     <p className="hover:underline">artists</p>
                   </Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                  className="pt-4"
+                >
                   <Link href="/program">
                     <p className="hover:underline">program</p>
                   </Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                  className="pt-4"
+                >
                   <Link href="/ticket">
                     <p className="hover:underline">tickets</p>
                   </Link>
                 </li>
               </ul>
             </div>
-          </Hamburger>
+          )}
         </div>
       </div>
       <Lines className="pt-10" />
