@@ -7,6 +7,10 @@ const nextConfig = {
         hostname: "source.unsplash.com",
       },
       {
+        protocol: "https",
+        hostname: "mature-insidious-monitor.glitch.me",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },
