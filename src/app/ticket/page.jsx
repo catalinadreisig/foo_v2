@@ -26,7 +26,7 @@ export default function Ticket() {
   const [info, setInfo] = useState();
 
   async function getAvailability() {
-    const res = await fetch("http://localhost:8080/available-spots");
+    const res = await fetch("https://mature-insidious-monitor.glitch.me/available-spots");
     const availability = await res.json();
     setAvailability(availability);
   }
