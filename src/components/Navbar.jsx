@@ -13,17 +13,17 @@ const Navbar = () => {
           <ul className="hidden md:flex gap-x-6 text-white uppercase pt-5">
             <li>
               <Link href="/artist">
-                <p>artists</p>
+                <p className="hover:underline">artists</p>
               </Link>
             </li>
             <li>
               <Link href="/program">
-                <p>program</p>
+                <p className="hover:underline">program</p>
               </Link>
             </li>
             <li>
               <Link href="/ticket">
-                <p>buy ticket</p>
+                <p className="hover:underline">tickets</p>
               </Link>
             </li>
           </ul>

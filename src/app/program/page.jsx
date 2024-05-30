@@ -97,12 +97,12 @@ export default function Program() {
         <h2>Jotunheim</h2>
       </div>
 
-      <article className="text-mini pt-10 gap-2 grid grid-cols-4  md:gap-44">
+      <article className="text-mini pt-4 gap-2 grid grid-cols-4 md:pt-10 md:gap-44 md:text-breads">
         <div>
           {midgard.map((time) => {
             return (
               <>
-                <div key={time.start} className=" py-3 grid">
+                <div key={time.start} className="grid py-4 md:py-3.5 ">
                   <p className="">{time.start}</p>
                 </div>
               </>
