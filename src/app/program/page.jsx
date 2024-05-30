@@ -10,7 +10,7 @@ export default function Program() {
   const [day, setDay] = useState("mon");
 
   async function fetchData(parm) {
-    const response = await fetch("http://localhost:8080/schedule");
+    const response = await fetch("https://mature-insidious-monitor.glitch.me/schedule");
     const data = await response.json();
 
     setMidgard(data.Midgard[parm]);
