@@ -156,10 +156,8 @@ export default function Ticket() {
         <article>
           <div>
             <h1 className="text-headers pt-8 justify-self-end">choose tents</h1>
-            <p className="text-links pt-3">want a tend with that?</p>
-            <p className="py-3 pb-8">
-              you can only choose up to {regTickets}+{vipTickets} tickets
-            </p>
+            <p className="text-links pt-3">want a tent with that?</p>
+            <p className="py-3 pb-8">you can only choose up to {totalTickets} tents</p>
             <div className="flex gap-x-3 pb-3">
               <p> 2 person tent (including the tent) 299DKK</p>
               <button
