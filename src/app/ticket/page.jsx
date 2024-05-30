@@ -134,7 +134,7 @@ export default function Ticket() {
 
         <div>
           <h1 className="text-headers pt-8 justify-self-end">Camping</h1>
-          <p className="text-links py-3 pb-8">where you stayin'?</p>
+          <p className="text-links py-3 pb-8">where you stayin?</p>
 
           {availability.map((oneSite) => {
             return (
@@ -156,7 +156,10 @@ export default function Ticket() {
         <article>
           <div>
             <h1 className="text-headers pt-8 justify-self-end">choose tents</h1>
-            <p className="text-links py-3 pb-8">want a tend with that?</p>
+            <p className="text-links pt-3">want a tend with that?</p>
+            <p className="py-3 pb-8">
+              you can only choose up to {regTickets}+{vipTickets} tickets
+            </p>
             <div className="flex gap-x-3 pb-3">
               <p> 2 person tent (including the tent) 299DKK</p>
               <button
@@ -258,7 +261,7 @@ export default function Ticket() {
             </div>
 
             <button className="text-links uppercase pt-8 hover:underline" onClick={makeReservation}>
-              looks right? TIMER START VED TRYK
+              looks right?
             </button>
           </div>
 
@@ -267,7 +270,7 @@ export default function Ticket() {
           <div>
             <h1 className="text-headers pt-8 justify-self-end">info</h1>
             {reservationId && <Timer reservationId={reservationId} />}
-            <form onsubmit="return">
+            <form onSubmit="return">
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>first name:</label>
