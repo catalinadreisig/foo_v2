@@ -4,6 +4,13 @@ import { useState, useEffect } from "react";
 import Lines from "../../components/Lines";
 import Timer from "../../components/Timer";
 
+import { createClient } from "@supabase/supabase-js";
+
+//supabase
+const supabaseUrl = "https://tynqwkikafukcxlrdlur.supabase.co";
+const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5bnF3a2lrYWZ1a2N4bHJkbHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5ODU0ODgsImV4cCI6MjAzMjU2MTQ4OH0.UBqEYSQzYOROuFFUt61qesvRl2aoPNbobWVl6sCr7Bk"; // Replace with your Anon Key
+const supabase = createClient("https://tynqwkikafukcxlrdlur.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5bnF3a2lrYWZ1a2N4bHJkbHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5ODU0ODgsImV4cCI6MjAzMjU2MTQ4OH0.UBqEYSQzYOROuFFUt61qesvRl2aoPNbobWVl6sCr7Bk"); // Erstat med din URL og Anon Key
+
 export default function Ticket() {
   const [regTickets, setRegTickets] = useState(0);
   const [vipTickets, setVipTickets] = useState(0);
@@ -75,20 +82,48 @@ export default function Ticket() {
     setResId(data.id);
   }
 
-  useEffect(() => {
-    setTotalTickets(regTickets + vipTickets);
-  }, [regTickets, vipTickets]);
+  //async function completeReservation() {
+  // samle data op fra formen via formdata som i recipies
+  //kalde den funktion som sender data til supabase
+  //sendInfoSupabase(object med med form data)
+  // redirect = /endpoint det kan i finde mere om på nextjs docs
+  //    const formData = new FormData(form); - måske}
 
-  function completeReservation() {
-    // samle data op fra formen via formdata som i recipies
-    //kalde den funktion som sender data til supabase
-    //sendInfoSupabase(object med med form data)
-    // redirect = /endpoint det kan i finde mere om på nextjs docs
-    //    const formData = new FormData(form); - måske
-  }
+  //async function sendInfoSupabase(data) {
+  //sætter i ind fra create recipies og retter til}
 
-  async function sendInfoSupabase(data) {
-    //sætter i ind fra create recipies og retter til
+  async function completeReservation() {
+    // Collect data from the persinfo form
+    const form = document.querySelector(".persinfo");
+    const formData = new FormData(form);
+
+    const bookingInfo = {
+      name: formData.get("fname"),
+      surname: formData.get("lname"),
+      email: formData.get("email"),
+      phone: formData.get("phonenumber"),
+      // Add other relevant reservation details if needed
+      // ...
+      reservationId: resId, // Include the reservation ID from the previous step
+      campSitePick: campSitePick, // Include campsite selection
+      tent1, // Include number of 2-person tents
+      tent2, // Include number of 3-person tents
+      green: green, // Include green camping selection
+    };
+
+    // Send reservation data to Supabase
+    const { data, error } = await supabase.from("public.foo").insert(bookingInfo);
+
+    if (error) {
+      console.error("Error sending reservation data:", error);
+      return;
+    }
+
+    // Handle successful reservation
+    console.log("Reservation submitted successfully!");
+    // Reset form fields, redirect to a confirmation page, etc.
+    // Navigate to the endpage (confirmation page)
+    navigate("../endpage");
   }
 
   return (
@@ -271,25 +306,25 @@ export default function Ticket() {
           <div>
             <h1 className="text-headers pt-8 justify-self-end">info</h1>
             {reservationId && <Timer reservationId={reservationId} />}
-            <form onsubmit="return">
+            <form className="persinfo" onsubmit="return">
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>first name:</label>
-                  <input className="text-fooBlue" type="fname" enterKeyHint="next" />
+                  <input className="text-fooBlue" type="fname" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>surname:</label>
-                  <input className="text-fooBlue" type="lname" enterKeyHint="next" />
+                  <input className="text-fooBlue" type="lname" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>email:</label>
-                  <input className="text-fooBlue " type="email" inputMode="email" enterKeyHint="next" />
+                  <input className="text-fooBlue " type="email" />
                 </div>
                 <div className="grid gap-x-3 py-2">
                   <label>phonenumber:</label>
-                  <input className="text-fooBlue " type="text" inputMode="tel" enterKeyHint="done" />
+                  <input className="text-fooBlue " type="text" />
                 </div>
               </fieldset>
               <button className="text-links uppercase pt-8 hover:underline" type="submit">
@@ -307,25 +342,24 @@ export default function Ticket() {
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>card number:</label>
-                  <input className="text-fooBlue" type="text" inputMode="numeric" enterKeyHint="next" />
+                  <input className="text-fooBlue" type="text" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>registration number:</label>
-                  <input className="text-fooBlue" type="text" inputMode="numeric" enterKeyHint="next" />
+                  <input className="text-fooBlue" type="text" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>name on card:</label>
-                  <input className="text-fooBlue " type="text" inputMode="numeric" enterKeyHint="next" />
+                  <input className="text-fooBlue " type="text" />
                 </div>
-
                 <div className="grid gap-x-3 py-2 pb-10">
                   <label>cvc:</label>
-                  <input className="text-fooBlue " type="text" inputMode="numeric" enterKeyHint="send" />
+                  <input className="text-fooBlue " type="text" />
                 </div>
               </fieldset>
-              <button className="text-links uppercase justify-self-end hover:underline">complete purchase</button>
+              <button className="text-links  justify-self-end hover:underline">complete purchase</button>
             </form>
           </div>
         </article>
