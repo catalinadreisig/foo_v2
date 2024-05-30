@@ -3,11 +3,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Lines from "../../components/Lines";
 import Timer from "../../components/Timer";
-import { createClient } from "@supabase/supabase-js";
-
-//supabase
-const supabaseUrl = "https://tynqwkikafukcxlrdlur.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR5bnF3a2lrYWZ1a2N4bHJkbHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5ODU0ODgsImV4cCI6MjAzMjU2MTQ4OH0.UBqEYSQzYOROuFFUt61qesvRl2aoPNbobWVl6sCr7Bk"; // Replace with your Anon Key
+import { supabaseUrl, supabaseKey } from "../../lib/setttings.js";
+import { redirect } from "next/navigation";
 
 export default function Ticket() {
   const [regTickets, setRegTickets] = useState(0);
@@ -21,9 +18,7 @@ export default function Ticket() {
   const [reservationId, setReservationId] = useState(false);
   const [resId, setResId] = useState();
   const [totalPrice, setTotalPrice] = useState(99);
-
-  //supabase
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const [newPage, setNewPage] = useState(false);
 
   //might use:
   const [oldValue] = useState();
@@ -93,10 +88,10 @@ export default function Ticket() {
   //async function sendInfoSupabase(data) {
   //sætter i ind fra create recipies og retter til}
 
-  async function completeReservation() {
-    // Collect data from the persinfo form
-    const form = document.querySelector(".persinfo");
-    const formData = new FormData(form);
+  async function completeReservation(e) {
+    e.preventDefault();
+    // ^e
+    const formData = new FormData(e.target);
 
     const bookingInfo = {
       name: formData.get("fname"),
@@ -104,27 +99,22 @@ export default function Ticket() {
       email: formData.get("email"),
       phone: formData.get("phonenumber"),
       // Add other relevant reservation details if needed
-      // ...
-      reservationId: resId, // Include the reservation ID from the previous step
-      campSitePick: campSitePick, // Include campsite selection
-      tent1, // Include number of 2-person tents
-      tent2, // Include number of 3-person tents
-      green: green, // Include green camping selection
     };
-
-    // Send reservation data to Supabase
-    const { data, error } = await supabase.from("public.foo").insert(bookingInfo);
-
-    if (error) {
-      console.error("Error sending reservation data:", error);
-      return;
-    }
-
-    // Handle successful reservation
-    console.log("Reservation submitted successfully!");
-    // Reset form fields, redirect to a confirmation page, etc.
-    // Navigate to the endpage (confirmation page)
-    navigate("../endpage");
+    await fetch(supabaseUrl, {
+      method: "POST",
+      //laver objekttil string
+      body: JSON.stringify(bookingInfo),
+      headers: {
+        Accept: "application/json",
+        apikey: supabaseKey,
+        prefer: "return=representation",
+        "Content-Type": "application/json",
+      },
+    });
+    setNewPage(true);
+  }
+  if (newPage) {
+    redirect("/endpage");
   }
 
   return (
@@ -177,7 +167,7 @@ export default function Ticket() {
 
           {availability.map((oneSite) => {
             return (
-              <div className="grid grid-cols-2 pt-5">
+              <div className="grid grid-cols-2 pt-5" key={oneSite.area}>
                 <input type="radio" name="camps" value={`${oneSite.area}`} onChange={pickSite}></input>
                 <div className="col-start-2">
                   <p>{oneSite.area}</p>
@@ -304,65 +294,56 @@ export default function Ticket() {
 
           <Lines />
 
-          <div>
-            <h1 className="text-headers pt-8 justify-self-end">info</h1>
-            {reservationId && <Timer reservationId={reservationId} />}
-            <form className="persinfo" onsubmit="return">
-              <fieldset>
-                <div className="grid gap-x-3 py-2">
-                  <label>first name:</label>
-                  <input className="text-fooBlue" type="fname" />
-                </div>
+          <h1 className="text-headers pt-8 justify-self-end">info</h1>
+          {reservationId && <Timer reservationId={reservationId} />}
+          <form onSubmit={completeReservation}>
+            <fieldset>
+              <div className="grid gap-x-3 py-2">
+                <label htmlFor="firstname">first name:</label>
+                <input className="text-fooBlue" type="text" name="fname" id="firstname" />
+              </div>
 
-                <div className="grid gap-x-3 py-2">
-                  <label>surname:</label>
-                  <input className="text-fooBlue" type="lname" />
-                </div>
+              <div className="grid gap-x-3 py-2">
+                <label htmlFor="surname">surname:</label>
+                <input className="text-fooBlue" type="text" name="lname" id="surname" />
+              </div>
 
-                <div className="grid gap-x-3 py-2">
-                  <label>email:</label>
-                  <input className="text-fooBlue " type="email" />
-                </div>
-                <div className="grid gap-x-3 py-2">
-                  <label>phonenumber:</label>
-                  <input className="text-fooBlue " type="text" />
-                </div>
-              </fieldset>
-              <button className="text-links uppercase pt-8 hover:underline" type="submit">
-                looks right?
-              </button>
-            </form>
-          </div>
+              <div className="grid gap-x-3 py-2">
+                <label htmlFor="email">email:</label>
+                <input className="text-fooBlue " type="email" name="email" id="email" />
+              </div>
+              <div className="grid gap-x-3 py-2">
+                <label htmlFor="phonenumber">phonenumber:</label>
+                <input className="text-fooBlue " type="text" name="phonenumber" id="phonenumber" />
+              </div>
+            </fieldset>
 
-          <Lines />
+            <Lines />
 
-          <div>
             <h1 className="text-headers pt-8 justify-self-end">payment</h1>
 
-            <form onsubmit={completeReservation}>
-              <fieldset>
-                <div className="grid gap-x-3 py-2">
-                  <label>card number:</label>
-                  <input className="text-fooBlue" type="text" />
-                </div>
+            <fieldset>
+              <div className="grid gap-x-3 py-2">
+                <label>card number:</label>
+                <input className="text-fooBlue" type="text" />
+              </div>
 
-                <div className="grid gap-x-3 py-2">
-                  <label>registration number:</label>
-                  <input className="text-fooBlue" type="text" />
-                </div>
+              <div className="grid gap-x-3 py-2">
+                <label>registration number:</label>
+                <input className="text-fooBlue" type="text" />
+              </div>
 
-                <div className="grid gap-x-3 py-2">
-                  <label>name on card:</label>
-                  <input className="text-fooBlue " type="text" />
-                </div>
-                <div className="grid gap-x-3 py-2 pb-10">
-                  <label>cvc:</label>
-                  <input className="text-fooBlue " type="text" />
-                </div>
-              </fieldset>
-              <button className="text-links  justify-self-end hover:underline">complete purchase</button>
-            </form>
-          </div>
+              <div className="grid gap-x-3 py-2">
+                <label>name on card:</label>
+                <input className="text-fooBlue " type="text" />
+              </div>
+              <div className="grid gap-x-3 py-2 pb-10">
+                <label>cvc:</label>
+                <input className="text-fooBlue " type="text" />
+              </div>
+            </fieldset>
+            <button className="text-links  justify-self-end hover:underline">complete purchase</button>
+          </form>
         </article>
       </section>
     </section>
