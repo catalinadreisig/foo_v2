@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import Lines from "../../components/Lines";
 import Timer from "../../components/Timer";
 
-export default function ticket() {
+export default function Ticket() {
   const [regTickets, setRegTickets] = useState(0);
   const [vipTickets, setVipTickets] = useState(0);
   const [totalTickets, setTotalTickets] = useState(0);
-  const [campSitePick, setCampSitePick] = useState();
+  const [campSitePick, setCampSitePick] = useState("");
   const [tent1, setTent1] = useState(0);
   const [tent2, setTent2] = useState(0);
   const [green, setGreen] = useState(false);
@@ -57,6 +57,7 @@ export default function ticket() {
 
   function makeReservation() {
     setReservationId(true);
+    getReservation();
   }
 
   async function getReservation() {
@@ -70,14 +71,22 @@ export default function ticket() {
         amount: regTickets,
       }),
     });
-    return await response.json();
+
+    const data = await response.json();
+    setResId(data.id);
   }
 
-  useEffect(() => {
-    setResId(getReservation());
-  }, [reservationId]);
+  function completeReservation() {
+    // samle data op fra formen via formdata som i recipies
+    //kalde den funktion som sender data til supabase
+    //sendInfoSupabase(object med med form data)
+    // redirect = /endpoint det kan i finde mere om på nextjs docs
+    //    const formData = new FormData(form); - måske
+  }
 
-  console.log(resId);
+  async function sendInfoSupabase(data) {
+    //sætter i ind fra create recipies og retter til
+  }
 
   return (
     <section className="text-breads text-white uppercase">
@@ -290,7 +299,7 @@ export default function ticket() {
           <div>
             <h1 className="text-headers pt-8 justify-self-end">payment</h1>
 
-            <form onsubmit="return">
+            <form onsubmit={completeReservation}>
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>card number:</label>
@@ -311,9 +320,7 @@ export default function ticket() {
                   <input className="text-fooBlue " type="text" />
                 </div>
               </fieldset>
-              <a href="/endpage" className="text-links  justify-self-end hover:underline">
-                complete purchase
-              </a>
+              <button className="text-links  justify-self-end hover:underline">complete purchase</button>
             </form>
           </div>
         </article>
