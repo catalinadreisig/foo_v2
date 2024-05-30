@@ -275,21 +275,21 @@ export default function Ticket() {
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>first name:</label>
-                  <input className="text-fooBlue" type="fname" />
+                  <input className="text-fooBlue" type="fname" enterKeyHint="next" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>surname:</label>
-                  <input className="text-fooBlue" type="lname" />
+                  <input className="text-fooBlue" type="lname" enterKeyHint="next" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>email:</label>
-                  <input className="text-fooBlue " type="email" />
+                  <input className="text-fooBlue " type="email" inputMode="email" enterKeyHint="next" />
                 </div>
                 <div className="grid gap-x-3 py-2">
                   <label>phonenumber:</label>
-                  <input className="text-fooBlue " type="text" />
+                  <input className="text-fooBlue " type="text" inputMode="tel" enterKeyHint="done" />
                 </div>
               </fieldset>
               <button className="text-links uppercase pt-8 hover:underline" type="submit">
@@ -307,24 +307,25 @@ export default function Ticket() {
               <fieldset>
                 <div className="grid gap-x-3 py-2">
                   <label>card number:</label>
-                  <input className="text-fooBlue" type="text" />
+                  <input className="text-fooBlue" type="text" inputMode="numeric" enterKeyHint="next" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>registration number:</label>
-                  <input className="text-fooBlue" type="text" />
+                  <input className="text-fooBlue" type="text" inputMode="numeric" enterKeyHint="next" />
                 </div>
 
                 <div className="grid gap-x-3 py-2">
                   <label>name on card:</label>
-                  <input className="text-fooBlue " type="text" />
+                  <input className="text-fooBlue " type="text" inputMode="numeric" enterKeyHint="next" />
                 </div>
+
                 <div className="grid gap-x-3 py-2 pb-10">
                   <label>cvc:</label>
-                  <input className="text-fooBlue " type="text" />
+                  <input className="text-fooBlue " type="text" inputMode="numeric" enterKeyHint="send" />
                 </div>
               </fieldset>
-              <button className="text-links  justify-self-end hover:underline">complete purchase</button>
+              <button className="text-links uppercase justify-self-end hover:underline">complete purchase</button>
             </form>
           </div>
         </article>
