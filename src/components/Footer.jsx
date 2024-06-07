@@ -24,7 +24,7 @@ const footer = () => {
         </div>
         <ul className="grid grid-rows-3 justify-end mr-0 text-white uppercase gap-y-3">
           <li className="place-self-end">
-            <Link href="/abut">
+            <Link href="/about">
               <p>about</p>
             </Link>
           </li>
