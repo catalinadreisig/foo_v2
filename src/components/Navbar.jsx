@@ -40,6 +40,7 @@ const Navbar = () => {
                     <p className="hover:underline">program</p>
                   </Link>
                 </li>
+
                 <li
                   onClick={() => {
                     setOpen(false);
@@ -48,6 +49,26 @@ const Navbar = () => {
                 >
                   <Link href="/ticket">
                     <p className="hover:underline">tickets</p>
+                  </Link>
+                </li>
+                <li
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                  className="pt-4"
+                >
+                  <Link href="/contact">
+                    <p className="hover:underline">contact</p>
+                  </Link>
+                </li>
+                <li
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                  className="pt-4"
+                >
+                  <Link href="/about">
+                    <p className="hover:underline">about</p>
                   </Link>
                 </li>
               </ul>
