@@ -6,7 +6,7 @@ import Lines from "./Lines";
 import face from "../app/imgs/face.png";
 import insta from "../app/imgs/insta.png";
 
-const Navbar = () => {
+const footer = () => {
   return (
     <div className="w-full text-links">
       <Lines className="pt-0" />
@@ -24,12 +24,12 @@ const Navbar = () => {
         </div>
         <ul className="grid grid-rows-3 justify-end mr-0 text-white uppercase gap-y-3">
           <li className="place-self-end">
-            <Link href="/">
+            <Link href="/abut">
               <p>about</p>
             </Link>
           </li>
           <li className="place-self-end">
-            <Link href="/">
+            <Link href="/contact">
               <p>contact</p>
             </Link>
           </li>
@@ -44,4 +44,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default footer;
