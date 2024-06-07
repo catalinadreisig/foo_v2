@@ -77,16 +77,9 @@ export default function Ticket() {
     const data = await response.json();
     setResId(data.id);
   }
-
-  //async function completeReservation() {
-  // samle data op fra formen via formdata som i recipies
-  //kalde den funktion som sender data til supabase
-  //sendInfoSupabase(object med med form data)
-  // redirect = /endpoint det kan i finde mere om på nextjs docs
-  //    const formData = new FormData(form); - måske}
-
-  //async function sendInfoSupabase(data) {
-  //sætter i ind fra create recipies og retter til}
+  useEffect(() => {
+    setTotalTickets(regTickets + vipTickets);
+  }, [regTickets, vipTickets]);
 
   async function completeReservation(e) {
     e.preventDefault();
@@ -247,44 +240,44 @@ export default function Ticket() {
 
           <div>
             <h1 className="text-headers pt-8 justify-self-end pb-8">cart</h1>
-            <div className="grid gap-x-12">
-              <p>Regular ticket</p>
-              <p className="justify-self-end">..... {regTickets}</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>Regular ticket</div>
+              <div className="justify-self-end">..... {regTickets}</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>vip ticket</p>
-              <p className="justify-self-end">..... {vipTickets}</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>vip ticket</div>
+              <div className="justify-self-end">..... {vipTickets}</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>chosen campsite</p>
-              <p className="justify-self-end">..... {campSitePick}</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>chosen campsite</div>
+              <div className="justify-self-end">..... {campSitePick}</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>2 person tent</p>
-              <p className="justify-self-end">..... {tent1}</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>2 diverson tent</div>
+              <div className="justify-self-end">..... {tent1}</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>3 person tent</p>
-              <p className="justify-self-end">..... {tent2}</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>3 person tent</div>
+              <div className="justify-self-end">..... {tent2}</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>Green camping</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>Green camping</div>
               <div className="justify-self-end flex gap-x-1">.....{green ? <p>1</p> : <p>0</p>}</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>fixed booking fee</p>
-              <p className="justify-self-end">..... 1</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div>fixed booking fee</div>
+              <div className="justify-self-end">..... 1</div>
             </div>
 
-            <div className="grid gap-x-12">
-              <p>total price</p>
-              <p className="justify-self-end">..... {totalPrice}</p>
+            <div className="grid grid-cols-2 pt-5 align-middle">
+              <div className="align-middle">total price</div>
+              <div className="align-middle text-end">..... {totalPrice}</div>
             </div>
 
             <button className="text-links uppercase pt-8 hover:underline" onClick={makeReservation}>
@@ -342,7 +335,7 @@ export default function Ticket() {
                 <input className="text-fooBlue " type="text" />
               </div>
             </fieldset>
-            <button className="text-links  justify-self-end hover:underline">complete purchase</button>
+            <button className="text-links uppercase justify-self-end hover:underline">complete purchase</button>
           </form>
         </article>
       </section>
