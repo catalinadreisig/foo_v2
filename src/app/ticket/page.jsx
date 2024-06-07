@@ -192,8 +192,11 @@ export default function Ticket() {
               <p>{tent1}</p>
               <button
                 onClick={() => {
-                  setTent1((o) => o + 1);
+                  if (tent1 < totalTickets) {
+                    setTent1((o) => o + 1);
+                  }
                 }}
+                disabled={tent1 >= totalTickets}
               >
                 +
               </button>
@@ -210,8 +213,11 @@ export default function Ticket() {
               <p>{tent2}</p>
               <button
                 onClick={() => {
-                  setTent2((o) => o + 1);
+                  if (tent1 < totalTickets) {
+                    setTent2((o) => o + 1);
+                  }
                 }}
+                disabled={tent2 >= totalTickets}
               >
                 +
               </button>
