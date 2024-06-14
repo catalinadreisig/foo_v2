@@ -189,15 +189,18 @@ export default function Ticket() {
               <p> 2 person tent (including the tent) 299DKK</p>
               <button
                 onClick={() => {
-                  setTent1((o) => o - 1);
+                  if (totalTickets % 2 === 0) {
+                    setTent1((o) => o - 1);
+                  }
                 }}
+                disabled={totalTickets % 2 !== 0} // Disable if totalTickets is odd
               >
                 -
               </button>
               <p>{tent1}</p>
               <button
                 onClick={() => {
-                  if (totalTents < totalTickets) {
+                  if (totalTickets > tent1) {
                     setTent1((o) => o + 1);
                   }
                 }}
@@ -210,15 +213,18 @@ export default function Ticket() {
               <p> 3 person tent (including the tent) 399DKK</p>
               <button
                 onClick={() => {
-                  setTent2((o) => o - 1);
+                  if (totalTickets % 3 === 0) {
+                    setTent2((o) => o - 1);
+                  }
                 }}
+                disabled={totalTickets % 3 !== 0} // Disable if totalTickets is not divisible by 3
               >
                 -
               </button>
               <p>{tent2}</p>
               <button
                 onClick={() => {
-                  if (totalTents < totalTickets) {
+                  if (totalTickets > tent2) {
                     setTent2((o) => o + 1);
                   }
                 }}
