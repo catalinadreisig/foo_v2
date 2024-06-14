@@ -11,6 +11,7 @@ export default function Ticket() {
   const [vipTickets, setVipTickets] = useState(0);
   const [totalTickets, setTotalTickets] = useState(0);
   const [campSitePick, setCampSitePick] = useState("");
+  const [totalTents, setTotalTents] = useState(0);
   const [tent1, setTent1] = useState(0);
   const [tent2, setTent2] = useState(0);
   const [green, setGreen] = useState(false);
@@ -80,6 +81,10 @@ export default function Ticket() {
   useEffect(() => {
     setTotalTickets(regTickets + vipTickets);
   }, [regTickets, vipTickets]);
+
+  useEffect(() => {
+    setTotalTents(tent1 + tent2);
+  }, [tent1, tent2]);
 
   async function completeReservation(e) {
     e.preventDefault();
@@ -192,11 +197,11 @@ export default function Ticket() {
               <p>{tent1}</p>
               <button
                 onClick={() => {
-                  if (tent1 < totalTickets) {
+                  if (totalTents < totalTickets) {
                     setTent1((o) => o + 1);
                   }
                 }}
-                disabled={tent1 >= totalTickets}
+                disabled={totalTents >= totalTickets}
               >
                 +
               </button>
@@ -213,11 +218,11 @@ export default function Ticket() {
               <p>{tent2}</p>
               <button
                 onClick={() => {
-                  if (tent1 < totalTickets) {
+                  if (totalTents < totalTickets) {
                     setTent2((o) => o + 1);
                   }
                 }}
-                disabled={tent2 >= totalTickets}
+                disabled={totalTents >= totalTickets}
               >
                 +
               </button>
