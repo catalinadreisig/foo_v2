@@ -78,6 +78,7 @@ export default function Ticket() {
     const data = await response.json();
     setResId(data.id);
   }
+
   useEffect(() => {
     setTotalTickets(regTickets + vipTickets);
   }, [regTickets, vipTickets]);
