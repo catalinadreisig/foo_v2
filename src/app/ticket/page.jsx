@@ -64,7 +64,7 @@ export default function Ticket() {
   }
 
   async function getReservation() {
-    const response = await fetch("http://localhost:8080/reserve-spot", {
+    const response = await fetch("https://mature-insidious-monitor.glitch.me/reserve-spot", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
