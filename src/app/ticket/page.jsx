@@ -246,7 +246,7 @@ export default function Ticket() {
               </button>
             </div>
           </div>
-          <Lines />–
+          <Lines />
           <div>
             <h1 className="text-headers pt-8 justify-self-end pb-8">cart</h1>
             <div className="grid grid-cols-2 pt-5 align-middle">
