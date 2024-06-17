@@ -228,9 +228,7 @@ export default function Ticket() {
               </button>
             </div>
           </div>
-
           <Lines />
-
           <div>
             <h1 className="text-headers py-8 justify-self-end">green camping</h1>
             <div className="flex gap-x-3 pb-3">
@@ -247,9 +245,7 @@ export default function Ticket() {
               </button>
             </div>
           </div>
-
-          <Lines />
-
+          <Lines />–
           <div>
             <h1 className="text-headers pt-8 justify-self-end pb-8">cart</h1>
             <div className="grid grid-cols-2 pt-5 align-middle">
@@ -296,9 +292,7 @@ export default function Ticket() {
               looks right?
             </button>
           </div>
-
           <Lines />
-
           <h1 className="text-headers pt-8 justify-self-end">info</h1>
           {reservationId && <Timer reservationId={reservationId} />}
           <form onSubmit={completeReservation}>
