@@ -5,10 +5,10 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        mini: ["10px", "12px"],
-        headers: ["50px", "60px"],
-        breads: ["16px", "20px"],
-        links: ["25px", "30px"],
+        mini: ["10px", "12px"], //mobile
+        headers: ["50px", "60px"], //overskrifter
+        breads: ["16px", "20px"], //brødtekst
+        links: ["25px", "30px"], //links
       },
 
       colors: {
