@@ -189,18 +189,15 @@ export default function Ticket() {
               <p> 2 person tent (including the tent) 299DKK</p>
               <button
                 onClick={() => {
-                  if (totalTickets % 2 === 0) {
-                    setTent1((o) => o - 1);
-                  }
+                  setTent1((o) => o - 1);
                 }}
-                disabled={totalTickets % 2 !== 0} // Disable if totalTickets is odd
               >
                 -
               </button>
               <p>{tent1}</p>
               <button
                 onClick={() => {
-                  if (totalTickets > tent1) {
+                  if (totalTents < totalTickets) {
                     setTent1((o) => o + 1);
                   }
                 }}
@@ -213,18 +210,15 @@ export default function Ticket() {
               <p> 3 person tent (including the tent) 399DKK</p>
               <button
                 onClick={() => {
-                  if (totalTickets % 3 === 0) {
-                    setTent2((o) => o - 1);
-                  }
+                  setTent2((o) => o - 1);
                 }}
-                disabled={totalTickets % 3 !== 0} // Disable if totalTickets is not divisible by 3
               >
                 -
               </button>
               <p>{tent2}</p>
               <button
                 onClick={() => {
-                  if (totalTickets > tent2) {
+                  if (totalTents < totalTickets) {
                     setTent2((o) => o + 1);
                   }
                 }}
@@ -310,21 +304,21 @@ export default function Ticket() {
             <fieldset>
               <div className="grid gap-x-3 py-2">
                 <label htmlFor="firstname">first name:</label>
-                <input className="text-fooBlue" type="text" name="fname" id="firstname" />
+                <input className="text-fooBlue" type="text" name="fname" id="firstname" inputMode="name" />
               </div>
 
               <div className="grid gap-x-3 py-2">
                 <label htmlFor="surname">surname:</label>
-                <input className="text-fooBlue" type="text" name="lname" id="surname" />
+                <input className="text-fooBlue" type="text" name="lname" id="surname" inputMode="name" />
               </div>
 
               <div className="grid gap-x-3 py-2">
                 <label htmlFor="email">email:</label>
-                <input className="text-fooBlue " type="email" name="email" id="email" />
+                <input className="text-fooBlue" type="email" name="email" id="email" inputMode="email" />
               </div>
               <div className="grid gap-x-3 py-2">
                 <label htmlFor="phonenumber">phonenumber:</label>
-                <input className="text-fooBlue " type="text" name="phonenumber" id="phonenumber" />
+                <input className="text-fooBlue" type="tel" name="phonenumber" id="phonenumber" inputMode="tel" />
               </div>
             </fieldset>
 
@@ -334,22 +328,22 @@ export default function Ticket() {
 
             <fieldset>
               <div className="grid gap-x-3 py-2">
-                <label>card number:</label>
-                <input className="text-fooBlue" type="text" />
+                <label>registration number:</label>
+                <input className="text-fooBlue" type="tel" inputmode="numeric" maxlength="4" id="regnumber" name="regnumber" />
               </div>
 
               <div className="grid gap-x-3 py-2">
-                <label>registration number:</label>
-                <input className="text-fooBlue" type="text" />
+                <label>account number:</label>
+                <input className="text-fooBlue" type="text" inputmode="numeric" maxlength="10" id="accnumber" name="accnumber" />
               </div>
 
               <div className="grid gap-x-3 py-2">
                 <label>name on card:</label>
-                <input className="text-fooBlue " type="text" />
+                <input className="text-fooBlue" type="text" id="name" inputMode="name" name="cardname" />
               </div>
               <div className="grid gap-x-3 py-2 pb-10">
                 <label>cvc:</label>
-                <input className="text-fooBlue " type="text" />
+                <input className="text-fooBlue" type="text" inputmode="numeric" maxlength="3" name="cvc" id="cvc" />
               </div>
             </fieldset>
             <button className="text-links uppercase justify-self-end hover:underline">complete purchase</button>
