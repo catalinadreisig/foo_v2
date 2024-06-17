@@ -237,6 +237,7 @@ export default function Ticket() {
               <p> Green camping 249DKK</p>
 
               <button
+                className="uppercase hover:underline"
                 type="radio"
                 onClick={() => {
                   setGreen(true);
