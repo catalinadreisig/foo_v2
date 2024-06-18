@@ -84,7 +84,7 @@ export default function Ticket() {
   }, [regTickets, vipTickets]);
 
   useEffect(() => {
-    setTotalTickets(tent1 + tent2);
+    setTotalTents(tent1 + tent2);
   }, [tent1, tent2]);
 
   async function completeReservation(e) {
